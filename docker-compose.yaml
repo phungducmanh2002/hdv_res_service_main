@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  user_db:
+  res_db:
     image: mysql:latest
-    container_name: user_db
+    container_name: res_db
     restart: always
     networks:
       - hdv_network
@@ -12,30 +12,30 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: false
       MYSQL_USER: sa
       MYSQL_PASSWORD: 1
-      MYSQL_DATABASE: db_user
+      MYSQL_DATABASE: db_res
     # ports:
     #   - "3306:3306"
     volumes:
-      - user-mysql-data:/var/lib/mysql
+      - res-mysql-data:/var/lib/mysql
 
-  user_service:
+  res_service:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: user_service
+    container_name: res_service
     depends_on:
-      - user_db
+      - res_db
     ports:
-      - "3000:3000"
+      - "3001:3001"
     networks:
       - hdv_network
     environment:
-      IP: user_service
-      PORT: 3000
-      DB_IP: user_db
+      IP: res_service
+      PORT: 3001
+      DB_IP: res_db
       DB_PORT: 3306
       DB_DIALECT: mysql
-      DB_NAME: db_user
+      DB_NAME: db_res
       DB_USER: sa
       DB_PASS: 1
       DB_GEN: 1
@@ -44,4 +44,4 @@ networks:
   hdv_network:
     driver: bridge
 volumes:
-  user-mysql-data:
+  res-mysql-data:
