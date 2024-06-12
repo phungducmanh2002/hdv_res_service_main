@@ -3,6 +3,11 @@ const IMGEtt = require("../data/entity/image.ett");
 
 class AvatarSV {
   static async updateAvatar(idUser, idImage) {
+    await AVTEtt.destroy({
+      where: {
+        idUser: idUser,
+      },
+    });
     return await AVTEtt.create({ idUser: idUser, idImage: idImage });
   }
   static async getImage(idUser) {

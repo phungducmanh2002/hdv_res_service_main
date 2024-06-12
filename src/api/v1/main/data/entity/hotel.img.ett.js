@@ -32,7 +32,9 @@ HotelIMGEtt.init(
         unique: true,
         fields: ["idHotel", "idImage"],
       },
-    ],
+    ],    
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

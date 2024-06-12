@@ -6,7 +6,7 @@ class AvatarCTL {
   static updateAvatar = [
     async (req, res, next) => {
       try {
-        const idUser = req.params.idUser;
+        const idUser = parseInt(req.params.idUser);
         const imageBuffer = req.file.buffer;
         const image = await ImageSV.createImage(imageBuffer);
         const avt = await AvatarSV.updateAvatar(idUser, image.id);
@@ -19,7 +19,7 @@ class AvatarCTL {
   static getAvatar = [
     async (req, res, next) => {
       try {
-        const idUser = req.params.idUser;
+        const idUser = parseInt(req.params.idUser);
         const type = req.query.type;
         const image = await AvatarSV.getImage(idUser);
         if (!image) {

@@ -19,6 +19,8 @@ IMGEtt.init(
     sequelize: SQLZConfig.SQLZInstance,
     freezeTableName: true,
     tableName: "image",
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

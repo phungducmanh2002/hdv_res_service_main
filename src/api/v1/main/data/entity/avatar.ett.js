@@ -34,8 +34,8 @@ AVTEtt.init(
         fields: ["idImage"],
       },
     ],
-    createdAt: true,
-    updatedAt: true,
+    createdAt: false,
+    updatedAt: false,
   }
 );
 
